@@ -4,10 +4,7 @@ icon: fa-envelope
 order: 4
 ---
 
-<p>Elementum sem parturient nulla quam placerat viverra
-mauris non cum elit tempus ullamcorper dolor. Libero rutrum ut lacinia
-donec curae mus. Eleifend id porttitor ac ultricies lobortis sem nunc
-orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
+<p>궁금한게 있으시다면 게시물의 댓글이나 하단의 이름, 이메일, 메세지 </p>
 
 <form method="post" action="https://formspree.io/{{ site.email }}">
   <div class="row">
@@ -20,4 +17,23 @@ orci ridiculus faucibus a consectetur. Porttitor curae mauris urna mi dolor.</p>
       <input type="submit" value="Send Message" />
     </div>
   </div>
+</form>
+
+
+<form
+  action="https://formspree.io/f/mzbknnwa"
+  method="POST"
+>
+  <label>
+    Your email:
+    <input type="email" name="_replyto">
+  </label>
+  <label>
+    Your message:
+    <textarea name="message"></textarea>
+  </label>
+
+  <!-- your other form fields go here -->
+
+  <button type="submit">Send</button>
 </form>

@@ -3,7 +3,7 @@ title: React Native 개발환경 준비하기
 layout: post
 ---
 <h4>RN은 기본적으로 자바스크립트 기반이므로 자바스크립트를 먼저 선행해야 좋은 것 같아요 ..</h4><br>
-<h2>맥 & Window 공통적으로 설치해야하는 것</h2>
+<h3>맥 & Window 공통적으로 설치해야하는 것</h3><br>
 <p> 1. node.js : <a href="https://nodejs.org/en/">https://nodejs.org/en/</a>(node.js를 설치하면 노드 패키지 매니저인 npm도 함께 설치됨)<br>
 	2. jdk :<a
 		href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html</a><br>
@@ -12,7 +12,7 @@ layout: post
 	버전 2를 설치해야함 )
 	5. 에디터 설치 : IntelliJ IDEA, VS Code 등 사용 중인 에디터<br>
 	(저는 vs Code의 추가 확장자 html Preview가 너무 좋아서 VS Code 사용했습니다 :) )
-	<br><br>
+	<br><br><br>
 	맥은 따로 왓치맨 + Xcode의 추가 설치해야함 (react native cli에서만 필요, expo cli는 필요 없음)
 </p>
 <hr />
@@ -47,11 +47,11 @@ layout: post
 	: 리액트 네이티브를 편하게 사용할 수 있도록 미리 여러 가지 설정이 되어 있는 툴이라고 생각하면 됨<br>
 	아이폰과 안드로이드 폰이 있으면 Xcode, 안드로이드 스튜디오 없이도 해당 플랫폼의 테스트를 진행하며 개발할 수 있음<br>
 	ios, 안드로이드, 웹을 함께 개발 가능함<br><br>
-	단점도 존재<br>
+	<b>단점도 존재<br></b>
 	대표적으로는 Expo에서 제공하는 API만 사용할 수 있으며 필요한 기능이 제공되지 않을 경우 네이티브 모듈을 추가로 만들어서 사용하는 것이 불가능하다는 점<br>
 	또한, 빌드 파일의 크기가 크다는 것<br><br>
 	
-	Expo 설치 : <a href="https://expo.io//">https://expo.io/</a><br><br>
+	- Expo 설치 : <a href="https://expo.io//">https://expo.io/</a><br><br>
 	Expo 웹사이트에서 회원가입한 후 Expo 프로젝트를 진행함<br>
 	- expo를 이용하여 RN 프로젝트를 생성하기(npm을 이용해서 expo-cli를 설치해야 함)<br>
 	터미널 or 명령 프롬포트에서 다음과 같이 입력해 expo-cli를 설치하기<br>
@@ -75,7 +75,7 @@ layout: post
 	</code>
 </p>
 <hr/>
-<p>
+<pre>
 	<b>4. 메인 파일 변경</b><br>
 	프로젝트 화면에 보이는 내용은 모두 App.js 파일에 있는 내용임<br>
 	먼저 프로젝트에 src 폴더를 생성하고 src 폴더 밑에 App.js 파일을 만들어 다음과 같이 작성<br>
@@ -86,29 +86,29 @@ layout: post
 		import React from 'react';<br>
 		import { View, StyleSheet, Text } from 'react-native';<br><br>
 
-		const App = () => {<br>
-			return (<br>
-				<View style={styles.container}><br>
-					<Text style={styles.title}>My First React Native</Text><br>
-				</View><br>
-			);<br>
-		};<br><br>
+		const App = () => {
+			return (
+				&#60;View style={styles.container}>
+					&#60;Text style={styles.title}>My First React Native&#60;/Text>
+				&#60;/View>
+			);
+		};
 
-		const styles = StyleSheet.create({<br>
-			container: {<br>
-				flex: 1,<br>
-				justifyContent: 'center',<br>
-				alignItems: 'center',<br>
-				backgroundColor: '#ffffff',<br>
-			},<br>
-			title: {<br>
-				fontSize: 30,<br>
-			},<br>
-		});<br><br>
+		const styles = StyleSheet.create({
+			container: {
+				flex: 1,
+				justifyContent: 'center',
+				alignItems: 'center',
+				backgroundColor: '#ffffff',
+			},
+			title: {
+				fontSize: 30,
+			},
+		});
 
 		export default App;
 	</code>
-</p><br>
+</pre><br>
 
 src 폴더의 App.js 파일 작성이 완료되면 이제 첫 화면 파일을 변경해볼게요<br>
 Expo 프로젝트의 경우 프로젝트 루프 폴더에 있는 App.js 파일을 다음과 같이 수정하기<br><br>

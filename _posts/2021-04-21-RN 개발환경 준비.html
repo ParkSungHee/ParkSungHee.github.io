@@ -2,291 +2,124 @@
 title: React Native 개발환경 준비하기
 layout: post
 ---
-<!-- Text stuff -->
+<h4>RN은 기본적으로 자바스크립트 기반이므로 자바스크립트를 먼저 선행해야 좋은 것 같아요 ..</h4><br>
 <h2>맥 & Window 공통적으로 설치해야하는 것</h2>
-<p> node.js : <a href="https://nodejs.org/en/">https://nodejs.org/en/</a>
-	jdk :<a href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html</a>
-	안드로이드 스튜디오 : <a href="https://developer.android.com/studio/">https://developer.android.com/studio/</a>
-	
+<p> 1. node.js : <a href="https://nodejs.org/en/">https://nodejs.org/en/</a>(node.js를 설치하면 노드 패키지 매니저인 npm도 함께 설치됨)<br>
+	2. jdk :<a
+		href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html</a><br>
+	3. 안드로이드 스튜디오 : <a href="https://developer.android.com/studio/">https://developer.android.com/studio/</a><br>
+	4. 파이썬 설치 : <a href="https://www.python.org/">https://www.python.org/</a>(현대 3 ver.이 제공되고 있지만 RN에서는 파이썬 2ver.를 사용하므로
+	버전 2를 설치해야함 )
+	5. 에디터 설치 : IntelliJ IDEA, VS Code 등 사용 중인 에디터<br>
+	(저는 vs Code의 추가 확장자 html Preview가 너무 좋아서 VS Code 사용했습니다 :) )
+	<br><br>
 	맥은 따로 왓치맨 + Xcode의 추가 설치해야함 (react native cli에서만 필요, expo cli는 필요 없음)
 </p>
 <hr />
-<h2>Heading Level 2</h2>
-<h3>Heading Level 3</h3>
+<h3>저는 Window 사용자라 window 기준에서 설명하겠습니다</h3>
+<p><b>1. node.js 설치 후 확인 방법</b> -> cmd(명령 프로프트 창)에서 아래 코드 입력<br>
+	<code>
+		node --version
+	</code><br>
+</p>
+<P>
+	<b>2. jdk 설치</b><br>
+	(1) 다운로드 받은 파일을 실행해서 JDK 설치가 완료되면 환경 변수를 설정함<br>
+	먼저, "시스템 -> 고급 시스템 설정 -> 환경 변수 -> 시스템 변수 -> 새로 만들기"를 통해 JAVA_HOME이라는 이름의 시스템 변수를 추가하고 그 값으로 앞에서 설치한 JDK의 경로를 지정함<br>
+<blockquote>
+	변수 이름 : JAVA_HOME<br>
+	변수 값 : C:\Program Files\Java\jdk-14.0.2
+</blockquote><br>
+(2) 시스템 변수에서 Path를 선택하고 편집을 통해 다음과 같이 수정 <br>
+<blockquote>
+	환경 변수 편집: %JAVA_HOME%\bin
+</blockquote><br>
+(3) jdk 설치 확인 방법</b> -> cmd(명령 프로프트 창)에서 아래 코드 입력<br>
+<code>
+		java -version<br>
+		javac -version
+	</code><br>
+</p>
 <hr />
-<header>
-	<h2>Heading with a Subtitle</h2>
-	<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-</header>
-<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare
-	mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in
-	adipiscing blandit tempus accumsan.</p>
-<hr />
+<p>
+	<b>3. RN 프로젝트 만들기</b><br>
+	(1) Expo<br>
+	: 리액트 네이티브를 편하게 사용할 수 있도록 미리 여러 가지 설정이 되어 있는 툴이라고 생각하면 됨<br>
+	아이폰과 안드로이드 폰이 있으면 Xcode, 안드로이드 스튜디오 없이도 해당 플랫폼의 테스트를 진행하며 개발할 수 있음<br>
+	ios, 안드로이드, 웹을 함께 개발 가능함<br><br>
+	단점도 존재<br>
+	대표적으로는 Expo에서 제공하는 API만 사용할 수 있으며 필요한 기능이 제공되지 않을 경우 네이티브 모듈을 추가로 만들어서 사용하는 것이 불가능하다는 점<br>
+	또한, 빌드 파일의 크기가 크다는 것<br><br>
+	
+	Expo 설치 : <a href="https://expo.io//">https://expo.io/</a><br><br>
+	Expo 웹사이트에서 회원가입한 후 Expo 프로젝트를 진행함<br>
+	- expo를 이용하여 RN 프로젝트를 생성하기(npm을 이용해서 expo-cli를 설치해야 함)<br>
+	터미널 or 명령 프롬포트에서 다음과 같이 입력해 expo-cli를 설치하기<br>
+	<code>
+		npm install --global expo-cli
+	</code><br><br>
 
-<!-- Lists -->
-<h2>Lists</h2>
-<div class="row">
-	<div class="6u 12u$(small)">
+	설치가 완료되면 다음 명령어로 Expo 프로젝트를 생성함<br>
+	<code>
+		expo init my-first-expo
+	</code><br><br>
 
-		<h3>Unordered</h3>
-		<ul>
-			<li>Dolor pulvinar etiam.</li>
-			<li>Sagittis lorem eleifend.</li>
-			<li>Felis feugiat dolore viverra.</li>
-			<li>Dolor pulvinar etiam.</li>
-		</ul>
+	항상 첫번째 선택지인 blank를 선택하면 프로젝트 생성이 완료됨 <br>
 
-		<h3>Icons</h3>
-		<ul class="icons">
-			<li><a href="#" class="icon fa-envelope"><span class="label">Twitter</span></a></li>
-			<li><a href="#" class="icon-r fa-envelope"><span class="label">Twitter</span></a></li>
-			<li><a href="#" class="icon fa-user"><span class="label">Facebook</span></a></li>
-			<li><a href="#" class="icon-r fa-user"><span class="label">Instagram</span></a></li>
-			<li><a href="#" class="icon-b fa-github"><span class="label">Github</span></a></li>
-			<li><a href="#" class="icon-b fa-github-alt"><span class="label">Dribbble</span></a></li>
-		</ul>
+	프로젝트 실행은 그 프로젝트로 가서 <br>
+	<code>
+		npm start
+	</code> or 
+	<code>
+		expo start
+	</code>
+</p>
+<hr/>
+<p>
+	<b>4. 메인 파일 변경</b><br>
+	프로젝트 화면에 보이는 내용은 모두 App.js 파일에 있는 내용임<br>
+	먼저 프로젝트에 src 폴더를 생성하고 src 폴더 밑에 App.js 파일을 만들어 다음과 같이 작성<br>
+	코드의 의미를 몰라도 일단 작성하기 !<br><br>
 
-	</div>
-	<div class="6u$ 12u$(small)">
+	src/App.js<br>
+	<code>
+		import React from 'react';<br>
+		import { View, StyleSheet, Text } from 'react-native';<br><br>
 
-		<h3>Ordered</h3>
-		<ol>
-			<li>Dolor pulvinar etiam.</li>
-			<li>Etiam vel felis at viverra.</li>
-			<li>Felis enim feugiat magna.</li>
-			<li>Etiam vel felis nullam.</li>
-			<li>Felis enim et tempus.</li>
-		</ol>
+		const App = () => {<br>
+			return (<br>
+				<View style={styles.container}><br>
+					<Text style={styles.title}>My First React Native</Text><br>
+				</View><br>
+			);<br>
+		};<br><br>
 
-	</div>
-</div>
-<h3>Definition</h3>
-<dl>
-	<dt>Item 1</dt>
-	<dd>
-		<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis
-			volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-	</dd>
-	<dt>Item 2</dt>
-	<dd>
-		<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis
-			volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-	</dd>
-	<dt>Item 3</dt>
-	<dd>
-		<p>Lorem ipsum dolor vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis
-			volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-	</dd>
-</dl>
+		const styles = StyleSheet.create({<br>
+			container: {<br>
+				flex: 1,<br>
+				justifyContent: 'center',<br>
+				alignItems: 'center',<br>
+				backgroundColor: '#ffffff',<br>
+			},<br>
+			title: {<br>
+				fontSize: 30,<br>
+			},<br>
+		});<br><br>
 
-<h3>Button</h3>
-<a href="#" class="button">Button</a>
-<a href="#" class="button icon fa-search">Icon</a>
+		export default App;
+	</code>
+</p><br>
 
-<hr />
+src 폴더의 App.js 파일 작성이 완료되면 이제 첫 화면 파일을 변경해볼게요<br>
+Expo 프로젝트의 경우 프로젝트 루프 폴더에 있는 App.js 파일을 다음과 같이 수정하기<br><br>
+App.js<br>
+<code>
+	import App from './src/App';<br><br>
 
-<!-- Blockquote -->
-<h2>Blockquote</h2>
-<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum
-	ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan
-	faucibus. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis.</blockquote>
-
-<hr />
-
-<!-- Table -->
-<h2>Table</h2>
-<div class="table-wrapper">
-	<table>
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Description</th>
-				<th>Price</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>Item 1</td>
-				<td>Ante turpis integer aliquet porttitor.</td>
-				<td>29.99</td>
-			</tr>
-			<tr>
-				<td>Item 2</td>
-				<td>Vis ac commodo adipiscing arcu aliquet.</td>
-				<td>19.99</td>
-			</tr>
-			<tr>
-				<td>Item 3</td>
-				<td> Morbi faucibus arcu accumsan lorem.</td>
-				<td>29.99</td>
-			</tr>
-			<tr>
-				<td>Item 4</td>
-				<td>Vitae integer tempus condimentum.</td>
-				<td>19.99</td>
-			</tr>
-			<tr>
-				<td>Item 5</td>
-				<td>Ante turpis integer aliquet porttitor.</td>
-				<td>29.99</td>
-			</tr>
-		</tbody>
-		<tfoot>
-			<tr>
-				<td colspan="2"></td>
-				<td>100.00</td>
-			</tr>
-		</tfoot>
-	</table>
-</div>
-
-<hr />
-
-<!-- Form -->
-<h2>Form</h2>
-
-<form method="post" action="#">
-	<div class="row uniform">
-		<div class="6u 12u$(xsmall)">
-			<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-		</div>
-		<div class="6u$ 12u$(xsmall)">
-			<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-		</div>
-		<!-- Break -->
-		<div class="12u$">
-			<div class="select-wrapper">
-				<select name="demo-category" id="demo-category">
-					<option value="">- Category -</option>
-					<option value="1">Manufacturing</option>
-					<option value="1">Shipping</option>
-					<option value="1">Administration</option>
-					<option value="1">Human Resources</option>
-				</select>
-			</div>
-		</div>
-		<!-- Break -->
-		<div class="4u 12u$(small)">
-			<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-			<label for="demo-priority-low">Low</label>
-		</div>
-		<div class="4u 12u$(small)">
-			<input type="radio" id="demo-priority-normal" name="demo-priority">
-			<label for="demo-priority-normal">Normal</label>
-		</div>
-		<div class="4u$ 12u$(small)">
-			<input type="radio" id="demo-priority-high" name="demo-priority">
-			<label for="demo-priority-high">High</label>
-		</div>
-		<!-- Break -->
-		<div class="6u 12u$(small)">
-			<input type="checkbox" id="demo-copy" name="demo-copy">
-			<label for="demo-copy">Email me a copy</label>
-		</div>
-		<div class="6u$ 12u$(small)">
-			<input type="checkbox" id="demo-human" name="demo-human" checked>
-			<label for="demo-human">I am a human</label>
-		</div>
-		<!-- Break -->
-		<div class="12u$">
-			<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-		</div>
-		<!-- Break -->
-		<div class="12u$">
-			<div class="actions">
-				<input type="submit" value="Send Message" class="special" />
-				<input type="reset" value="Reset" />
-			</div>
-		</div>
-	</div>
-</form>
-
-<hr />
-
-<!-- Image -->
-<h2>Image</h2>
-
-<div class="row">
-	<div class="4u 12u$(mobile)">
-		<div class="item">
-			<a href="#" class="image fit"><img src="{{ 'assets/images/pic02.jpg' | relative_url }}"
-					alt="Ipsum Feugiat" /></a>
-			<header>
-				<h3>Ipsum Feugiat</h3>
-			</header>
-		</div>
-		<div class="item">
-			<a href="#" class="image fit"><img src="{{ 'assets/images/pic03.jpg' | relative_url }}"
-					alt="Rhoncus Semper" /></a>
-			<header>
-				<h3>Rhoncus Semper</h3>
-			</header>
-		</div>
-	</div>
-	<div class="4u 12u$(mobile)">
-		<div class="item">
-			<a href="#" class="image fit"><img src="{{ 'assets/images/pic04.jpg' | relative_url }}"
-					alt="Magna Nullam" /></a>
-			<header>
-				<h3>Magna Nullam</h3>
-			</header>
-		</div>
-		<div class="item">
-			<a href="#" class="image fit"><img src="{{ 'assets/images/pic05.jpg' | relative_url }}"
-					alt="Natoque Vitae" /></a>
-			<header>
-				<h3>Natoque Vitae</h3>
-			</header>
-		</div>
-	</div>
-	<div class="4u$ 12u$(mobile)">
-		<div class="item">
-			<a href="#" class="image fit"><img src="{{ 'assets/images/pic06.jpg' | relative_url }}"
-					alt="Dolor Penatibus" /></a>
-			<header>
-				<h3>Dolor Penatibus</h3>
-			</header>
-		</div>
-		<div class="item">
-			<a href="#" class="image fit"><img src="{{ 'assets/images/pic07.jpg' | relative_url }}"
-					alt="Orci Convallis" /></a>
-			<header>
-				<h3>Orci Convallis</h3>
-			</header>
-		</div>
-	</div>
-</div>
-
-<h3>Left &amp; Right</h3>
-<p><span class="image left"><img src="{{ 'assets/images/pic03.jpg' | relative_url }}" alt="" /></span>Lorem ipsum dolor
-	sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in
-	faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac
-	pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget.
-	tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac
-	adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod.
-	Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing
-	accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit
-	adipiscing eu felis iaculis.</p>
-<p><span class="image right"><img src="{{ 'assets/images/pic02.jpg' | relative_url }}" alt="" /></span>Lorem ipsum dolor
-	sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in
-	faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac
-	pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget.
-	tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac
-	adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod.
-	Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing
-	accumsan eu faucibus. Integer ac pellentesque praesent. Vestibulum ante ipsum primis in faucibus magna blandit
-	adipiscing eu felis iaculis.</p>
-
-<hr />
-
-<!-- Preformatted Code -->
-<h2>Preformatted</h2>
-<pre><code>i = 0;
-
-while (!deck.isInOrder()) {
-	print 'Iteration ' + i;
-	deck.shuffle();
-	i++;
-}
-
-print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
+	export default App;
+</code><br>
+<hr/>
+궁금한 사항은 ... 
+<ul class="icons">
+	<li><a href="https://github.com/ParkSungHee" class="icon-b fa-github"><span class="label">Github</span></a></li>
+</ul>

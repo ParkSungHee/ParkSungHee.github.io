@@ -8,7 +8,7 @@ layout: post
 	2. jdk :<a
 		href="http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html">http://www.oracle.com/technetwork/java/javase/downloads/index-jsp-138363.html</a><br>
 	3. 안드로이드 스튜디오 : <a href="https://developer.android.com/studio/">https://developer.android.com/studio/</a><br>
-	4. 파이썬 설치 : <a href="https://www.python.org/">https://www.python.org/</a>(현대 3 ver.이 제공되고 있지만 RN에서는 파이썬 2ver.를 사용하므로
+	4. 파이썬 설치 : <a href="https://www.python.org/">https://www.python.org/</a>(현재 3 ver.이 제공되고 있지만 RN에서는 파이썬 2ver.를 사용하므로
 	버전 2를 설치해야함 )
 	5. 에디터 설치 : IntelliJ IDEA, VS Code 등 사용 중인 에디터<br>
 	(저는 vs Code의 추가 확장자 html Preview가 너무 좋아서 VS Code 사용했습니다 :) )
@@ -67,49 +67,43 @@ layout: post
 	항상 첫번째 선택지인 blank를 선택하면 프로젝트 생성이 완료됨 <br>
 
 	프로젝트 실행은 그 프로젝트로 가서 <br>
-	<code>
-		npm start
-	</code> or 
-	<code>
-		expo start
-	</code>
+	<code>npm start</code> or <code>expo start</code>
 </p>
 <hr/>
 <pre>
-	<b>4. 메인 파일 변경</b>
-	프로젝트 화면에 보이는 내용은 모두 App.js 파일에 있는 내용임
-	먼저 프로젝트에 src 폴더를 생성하고 src 폴더 밑에 App.js 파일을 만들어 다음과 같이 작성
-	코드의 의미를 몰라도 일단 작성하기 !
+<b>4. 메인 파일 변경</b>
+프로젝트 화면에 보이는 내용은 모두 App.js 파일에 있는 내용임
+먼저 프로젝트에 src 폴더를 생성하고 src 폴더 밑에 App.js 파일을 만들어 다음과 같이 작성
+코드의 의미를 몰라도 일단 작성하기 !
 
-	src/App.js<br>
-	<code>
-		import React from 'react';<br>
-		import { View, StyleSheet, Text } from 'react-native';<br><br>
+src/App.js
+<code>
+	import React from 'react';<br>
+	import { View, StyleSheet, Text } from 'react-native';<br><br>
 
-		const App = () => {
-			return (
-				&#60;View style={styles.container}>
-					&#60;Text style={styles.title}>My First React Native&#60;/Text>
-				&#60;/View>
-			);
-		};
+	const App = () => {
+		return (
+			&#60;View style={styles.container}>
+				&#60;Text style={styles.title}>My First React Native&#60;/Text>
+			&#60;/View>
+		);
+	};
 
-		const styles = StyleSheet.create({
-			container: {
-				flex: 1,
-				justifyContent: 'center',
-				alignItems: 'center',
-				backgroundColor: '#ffffff',
-			},
-			title: {
-				fontSize: 30,
-			},
-		});
+	const styles = StyleSheet.create({
+		container: {
+			flex: 1,
+			justifyContent: 'center',
+			alignItems: 'center',
+			backgroundColor: '#ffffff',
+		},
+		title: {
+			fontSize: 30,
+		},
+	});
 
-		export default App;
-	</code>
-</pre><br>
-
+	export default App;
+</code>
+</pre>
 src 폴더의 App.js 파일 작성이 완료되면 이제 첫 화면 파일을 변경해볼게요<br>
 Expo 프로젝트의 경우 프로젝트 루프 폴더에 있는 App.js 파일을 다음과 같이 수정하기<br><br>
 App.js<br>
